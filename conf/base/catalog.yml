@@ -1,0 +1,50 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+sales:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/ford.csv
+
+cleaned_sales:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/cleaned_sales.csv
+
+engineered_sales:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/engineered_sales.csv
+ohc_columns:
+  type: kedro.extras.datasets.json.JSONDataSet
+  filepath: data/04_feature/ohc_columns.json
+  
+normalized_price:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/normalized_price.csv
+
+boxcox_hyper:
+  type: kedro.extras.datasets.json.JSONDataSet
+  filepath: data/04_feature/boxcox_hyper.json
+
+sales_ohc:
+  type: pandas.CSVDataSet
+  filepath: data/04_feature/sales_ohc.csv
+
+ridge_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/ridge_model.pickle
+  backend: pickle
+
+ridge_model_scaler:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/ridge_model_scaler.pickle
+  backend: pickle
+
+engineered_sales_with_predictions:
+  type: pandas.ParquetDataSet
+  filepath: data/07_model_output/engineered_sales_with_predictions.pq
+
+predictions:
+  type: pandas.CSVDataSet
+  filepath: data/08_reporting/predictions.csv
+
